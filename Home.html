@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyGame Hub - Download 20+ Awesome Games</title>
+ <link rel="stylesheet" href="./home.css">
+<script src="./home.js"></script>
+ <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --accent: #fd79a8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .hero {
+            height: 70vh;
+            background: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #dfe6e9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+        }
+        
+        .games-section {
+            padding: 4rem 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--light);
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .game-card {
+            background-color: #3d3d3d;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        
+        .game-img {
+            height: 150px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .game-info {
+            padding: 1.5rem;
+        }
+        
+        .game-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .game-desc {
+            color: #b2bec3;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .download-btn {
+            width: 100%;
+            text-align: center;
+        }
+        
+        footer {
+            background-color: #222;
+            padding: 2rem;
+            text-align: center;
+            color: #b2bec3;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: #b2bec3;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">MyGame Hub</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Games</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="./terms.html">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover & Download 20+ Amazing Games</h1>
+            <p>Join millions of players worldwide in epic adventures, thrilling battles, and mind-bending puzzles. All games are free to download!</p>
+            <a href="#games" class="btn btn-primary">Explore Games</a>
+        </div>
+    </section>
+    
+    <section class="games-section" id="games">
+        <h2 class="section-title">Our Game Collection</h2>
+        <div class="games-grid">
+            <div class="filter-container">
+    <div class="filter-section">
+        <h3>Category</h3>
+        <div class="filter-options">
+            <label><input type="checkbox" name="category" value="adventure" checked> Adventure</label>
+            <label><input type="checkbox" name="category" value="action" checked> Action</label>
+            <label><input type="checkbox" name="category" value="puzzle" checked> Puzzle</label>
+            <label><input type="checkbox" name="category" value="racing" checked> Racing</label>
+            <label><input type="checkbox" name="category" value="sports" checked> Sports</label>
+            <label><input type="checkbox" name="category" value="simulation" checked> Simulation</label>
+            <label><input type="checkbox" name="category" value="strategy" checked> Strategy</label>
+            <label><input type="checkbox" name="category" value="horror" checked> Horror</label>
+        </div>
+    </div>
+    
+    <div class="filter-section">
+        <h3>Player Mode</h3>
+        <div class="filter-options">
+            <label><input type="checkbox" name="mode" value="single" checked> Single Player</label>
+            <label><input type="checkbox" name="mode" value="multi" checked> Multiplayer</label>
+            <label><input type="checkbox" name="mode" value="online" checked> Online</label>
+        </div>
+    </div>
+    
+    <div class="filter-section">
+        <h3>Rating</h3>
+        <div class="filter-options">
+            <label><input type="checkbox" name="rating" value="5" checked> ★★★★★</label>
+            <label><input type="checkbox" name="rating" value="4" checked> ★★★★☆</label>
+            <label><input type="checkbox" name="rating" value="3" checked> ★★★☆☆</label>
+        </div>
+    </div>
+    
+    <button id="apply-filters" class="btn">Apply Filters</button>
+    <button id="reset-filters" class="btn btn-secondary">Reset</button>
+</div>
+            <!-- Game 1 -->
+            <div name="racing" class="game-card">
+                <img src="./assect/game.webp" alt="Epic Quest" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Epic Quest</h3>
+                    <p class="game-desc">Embark on an unforgettable adventure through magical realms and defeat the dark lord.</p>
+                    <a href="https://www.pcgamespunch.com/splinter-cell-1-ripped-pc-game-free/" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 2 -->
+            <div class="game-card">
+                <img src="h0x150?text=Space+Invaders" alt="Space Invaders" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Space Invaders</h3>
+                    <p class="game-desc">Defend Earth from alien invasion in this classic arcade shooter with modern graphics.</p>
+                    <a href="../../../Downloads/Age_of_Empires_Definitive_Edition_Build_46777-Razor1911/rzr-ageofempire1de.iso" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 3 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=Puzzle+Masters" alt="Puzzle Masters" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Puzzle Masters</h3>
+                    <p class="game-desc">Challenge your brain with hundreds of mind-bending puzzles and riddles.</p>
+                    <a href="../../../Downloads/Call Of Duty - World At War (2008) Repack от Canek77" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 4 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=Racing+Legends" alt="Racing Legends" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Racing Legends</h3>
+                    <p class="game-desc">Experience the thrill of high-speed racing with realistic physics and stunning tracks.</p>
+                    <a href="#" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 5 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=Zombie+Apocalypse" alt="Zombie Apocalypse" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Zombie Apocalypse</h3>
+                    <p class="game-desc">Survive the undead horde in this intense first-person survival horror game.</p>
+                    <a href="#" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 6 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=Farm+Simulator" alt="Farm Simulator" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Farm Simulator</h3>
+                    <p class="game-desc">Build and manage your dream farm in this relaxing simulation game.</p>
+                    <a href="#" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 7 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=Sports+Champions" alt="Sports Champions" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Sports Champions</h3>
+                    <p class="game-desc">Compete in 10 different sports and become the ultimate champion.</p>
+                    <a href="#" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 8 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=Mystery+Island" alt="Mystery Island" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Mystery Island</h3>
+                    <p class="game-desc">Solve the secrets of a mysterious island in this adventure puzzle game.</p>
+                    <a href="#" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 9 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=War+Strategy" alt="War Strategy" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">War Strategy</h3>
+                    <p class="game-desc">Command armies and conquer territories in this deep tactical strategy game.</p>
+                    <a href="#" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 10 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=City+Builder" alt="City Builder" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">City Builder</h3>
+                    <p class="game-desc">Design and manage your perfect city in this detailed construction simulator.</p>
+                    <a href="#" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 11 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=Wild+West" alt="Wild West" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Wild West</h3>
+                    <p class="game-desc">Experience the lawless frontier in this open-world western adventure.</p>
+                    <a href="#" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 12 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=Underwater+Explorer" alt="Underwater Explorer" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Underwater Explorer</h3>
+                    <p class="game-desc">Discover the mysteries of the deep sea in this beautiful exploration game.</p>
+                    <a href="#" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 13 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=Super+Racer" alt="Super Racer" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Super Racer</h3>
+                    <p class="game-desc">High-speed racing with futuristic vehicles and gravity-defying tracks.</p>
+                    <a href="#" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 14 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=Dragon+Legends" alt="Dragon Legends" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Dragon Legends</h3>
+                    <p class="game-desc">Raise and train dragons in this magical creature-collection RPG.</p>
+                    <a href="#" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 15 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=Space+Explorer" alt="Space Explorer" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Space Explorer</h3>
+                    <p class="game-desc">Build your spaceship and explore a vast procedurally generated universe.</p>
+                    <a href="#" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 16 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=Football+Heroes" alt="Football Heroes" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Football Heroes</h3>
+                    <p class="game-desc">The ultimate football experience with realistic physics and team management.</p>
+                    <a href="#" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 17 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=Jungle+Adventure" alt="Jungle Adventure" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Jungle Adventure</h3>
+                    <p class="game-desc">Explore ancient ruins and uncover hidden treasures in the dense jungle.</p>
+                    <a href="#" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 18 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=Robot+Wars" alt="Robot Wars" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Robot Wars</h3>
+                    <p class="game-desc">Build and battle with custom robots in this futuristic combat simulator.</p>
+                    <a href="#" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 19 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=Pirate+King" alt="Pirate King" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Pirate King</h3>
+                    <p class="game-desc">Command your pirate ship, plunder treasure, and become the most feared pirate.</p>
+                    <a href="#" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 20 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=Ghost+Hunters" alt="Ghost Hunters" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Ghost Hunters</h3>
+                    <p class="game-desc">Investigate haunted locations and capture supernatural entities.</p>
+                    <a href="#" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 21 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=Winter+Sports" alt="Winter Sports" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Winter Sports</h3>
+                    <p class="game-desc">Compete in snowboarding, skiing, and other winter Olympic events.</p>
+                    <a href="#" class="btn download-btn">Download</a>
+                </div>
+            </div>
+            
+            <!-- Game 22 -->
+            <div class="game-card">
+                <img src="https://via.placeholder.com/300x150?text=Detective+Stories" alt="Detective Stories" class="game-img">
+                <div class="game-info">
+                    <h3 class="game-title">Detective Stories</h3>
+                    <p class="game-desc">Solve complex murder mysteries in this narrative-driven detective game.</p>
+                    <a href="#" class="btn download-btn">Download</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <!-- Add this in your footer or as a standalone section -->
+<div class="subscribe-section">
+    <h3>Get Game Updates</h3>
+    <p>Subscribe to receive news about new games and special offers!</p>
+    <form class="subscribe-form">
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit" class="subscribe-btn">Subscribe</button>
+    </form>
+</div>
+        <div class="footer-links">
+            <a href="#">Home</a>
+            <a href="#">Games</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+        </div>
+        <p>&copy; 2023 MyGame Hub. All rights reserved.</p>
+    </footer>
+
+
+    <script>
+    // Simple tag filter
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all buttons
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const filter = this.dataset.filter;
+            const games = document.querySelectorAll('.game-card');
+            
+            games.forEach(game => {
+                if (filter === 'all' || game.dataset.category.includes(filter)) {
+                    game.style.display = 'block';
+                } else {
+                    game.style.display = 'none';
+                }
+            });
+        });
+    });
+    
+    // Advanced filter system
+    document.getElementById('apply-filters').addEventListener('click', function() {
+        const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
+        const selectedModes = Array.from(document.querySelectorAll('input[name="mode"]:checked')).map(cb => cb.value);
+        const selectedRatings = Array.from(document.querySelectorAll('input[name="rating"]:checked')).map(cb => cb.value);
+        
+        document.querySelectorAll('.game-card').forEach(game => {
+            const gameCategory = game.dataset.category.split(' ');
+            const gameMode = game.dataset.mode.split(' ');
+            const gameRating = game.dataset.rating;
+            
+            const categoryMatch = selectedCategories.length === 0 || selectedCategories.some(cat => gameCategory.includes(cat));
+            const modeMatch = selectedModes.length === 0 || selectedModes.some(mode => gameMode.includes(mode));
+            const ratingMatch = selectedRatings.length === 0 || selectedRatings.includes(gameRating);
+            
+            game.style.display = (categoryMatch && modeMatch && ratingMatch) ? 'block' : 'none';
+        });
+    });
+
+    // Reset filters
+    document.getElementById('reset-filters').addEventListener('click', function() {
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+        document.querySelectorAll('.game-card').forEach(game => game.style.display = 'block');
+        
+        // Also reset active filter button if exists
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        document.querySelector('.filter-btn[data-filter="all"]')?.classList.add('active');
+    });
+
+    // Subscription handling
+    const handleSubscription = (email) => {
+        if (!email || !email.includes('@') || !email.includes('.')) {
+            alert("Please enter a valid email address");
+            return false;
+        }
+        
+        console.log("Subscribed:", email);
+        alert("Thank you for subscribing!");
+        return true;
+    };
+
+    // Simple subscription button
+    document.getElementById('subscribe-btn')?.addEventListener('click', function() {
+        const email = prompt("Enter your email to subscribe for game updates:");
+        handleSubscription(email);
+    });
+
+    // Form subscription
+    document.querySelector('.subscribe-form')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input').value;
+        
+        if (handleSubscription(email)) {
+            this.querySelector('input').value = ''; // Clear the input
+        }
+    });
+</script>
+</body>
+</html>

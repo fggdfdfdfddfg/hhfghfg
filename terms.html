@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store</title>
+    <link rel="stylesheet" href="./t.css">
+    <script src="./t.js"></script>
+     <script src="./b.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Store</h1>
+    </header>
+    
+    <main>
+        <section id="products">
+            <h2>Our Products</h2>
+            <div class="product-grid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </section>
+        
+        <section id="order-form" class="hidden">
+            <h2>Place Your Order</h2>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="product">Product:</label>
+                    <input type="text" id="product" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" min="1" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Shipping Address:</label>
+                    <textarea id="address" required></textarea>
+                </div>
+                <button type="submit">Place Order</button>
+            </form>
+        </section>
+        
+        <section id="order-confirmation" class="hidden">
+            <h2>Order Confirmation</h2>
+            <p>Thank you for your order!</p>
+            <p>Your order ID is: <span id="order-id"></span></p>
+            <button id="track-order">Track Your Order</button>
+            <button id="new-order">Place Another Order</button>
+        </section>
+        
+        <section id="order-tracking" class="hidden">
+            <h2>Track Your Order</h2>
+            <div class="form-group">
+                <label for="tracking-id">Enter Order ID:</label>
+                <input type="text" id="tracking-id" required>
+                <button id="track-btn">Track</button>
+            </div>
+            <div id="order-details" class="hidden">
+                <!-- Order details will be displayed here -->
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2023 Online Store. All rights reserved.</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
